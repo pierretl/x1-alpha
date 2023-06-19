@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script defer src="script.min.js"></script>
+    <title>X-1 Alpha</title>
+</head>
+<body>
+
+    <button class="js--pause">pause</button>
+    <button class="js--play">play</button>
+
+    <div class="scene">
+        <div class="limite --droite js--obstacle"></div>
+        <div class="limite --gauche js--obstacle"></div>
+        <div class="limite --haut js--obstacle"></div>
+        <div class="limite --bas js--obstacle"></div>
+        <div class="obstacle js--obstacle" style="top: 300px;left:200px;"></div>
+        <div class="obstacle js--obstacle" style="top: 400px;left:400px;"></div>
+        <div class="obstacle js--obstacle" style="top: 400px;right:0px;"></div>
+        <div class="obstacle js--obstacle" style="top: 180px;left:600px;"></div>
+        <div class="obstacle js--obstacle" style="top: 300px;left:600px;"></div>
+        <div class="obstacle js--obstacle" style="top: 180px;left:220px;"></div>
+        <div class="obstacle js--obstacle" style="top: 220px;left:310px;width:300px;height:100px"></div>
+        <div class="vaisseau-spatial js--vaisseau" style="top: 100px;left:300px;">
+            <div class="reacteur js--reacteur" data-boost="--boost"></div>
+        </div>
+        <div id="character"></div>
+    </div>
+    
+    
+</body>
+</html>
