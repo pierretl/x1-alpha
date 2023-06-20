@@ -1,7 +1,9 @@
-const OBSTACLES = document.querySelectorAll('.js--obstacle');
+const 
+    OBSTACLES = document.querySelectorAll('.js--obstacle'),
+    GRAVITE = 50;
 
 let vaisseau = {
-    x: 300,
+    x: 100,
     y: 100,
     element: document.querySelector('.js--vaisseau'),
     reacteur: document.querySelector('.js--reacteur'),
@@ -56,29 +58,11 @@ function Timer(fn, t) {
 }
 
 
-var chuteVaisseau = new Timer(function() {
-
-    /*
-    if (enCollision(vaisseau.element, LIMITE_BAS)) {
-        vaisseau.element.style.top = LIMITE_BAS.offsetTop - vaisseau.element.clientHeight + 'px';
-    } else if(enCollision(vaisseau.element, OBSTACLE)) {
-        vaisseau.element.style.top = OBSTACLE.offsetTop - vaisseau.element.clientHeight + 'px';
-    } else if(enCollision(vaisseau.element, OBSTACLE2)) {
-        vaisseau.element.style.top = OBSTACLE2.offsetTop - vaisseau.element.clientHeight + 'px';
-    } else {
-        vaisseau.element.style.top = vaisseau.element.offsetTop + vaisseau.vitesse + 'px';
-    }
-*/
-
-}, 20);
-chuteVaisseau.stop();
-
-document.querySelector('.js--pause').addEventListener('click', function(){
-    chuteVaisseau.stop();
-});
-document.querySelector('.js--play').addEventListener('click', function(){
-    chuteVaisseau.start();
-});
+var gravite = new Timer(function() {
+    deplaceVaisseau(0, 1);
+}, GRAVITE);
+// desactive la gravité
+//gravite.stop();
 
 
 
@@ -124,13 +108,13 @@ function enCollisionVaisseau(vaisseau, obstacle) {
  */
 document.addEventListener('keydown', function(e) {
     detectionClavier(e);
-    chuteVaisseau.stop();
+    gravite.stop();
 });
 document.addEventListener('keyup', function(e) {
     detectionClavier(e);
     vaisseau.element.style.transform = '';
     vaisseau.reacteur.style.transform = '';
-    chuteVaisseau.start();
+    gravite.start();
 });
 
 
@@ -207,6 +191,7 @@ let hitbox = function(vaisseau, dx, dy, obstacle) {
 
     if( vaisseau.element.offsetTop + vaisseau.element.clientHeight - 1 === obstacle.offsetTop ) {
         obstacle.style.borderTopColor = 'cyan';
+        gravite.stop();
         goto(dx, dy, 'haut');
         OBSTACLES.forEach(function(deuxiemeObstacle){
             if (enCollisionVaisseau(vaisseau, deuxiemeObstacle) && deuxiemeObstacle.id != obstacle.id) {
