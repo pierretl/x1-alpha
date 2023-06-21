@@ -4,7 +4,7 @@ const
     SPRITE = {
         EXPLOSION : {
             X: 106,
-            Y: 45
+            Y: 0
         }
     };
 
