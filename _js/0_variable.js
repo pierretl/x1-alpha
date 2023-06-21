@@ -1,5 +1,6 @@
 const 
     OBSTACLES = document.querySelectorAll('.js--obstacle'),
+    JAUGE = document.querySelector('.js--jauge-degat'),
     GRAVITE = 50,
     SPRITE = {
         EXPLOSION : {

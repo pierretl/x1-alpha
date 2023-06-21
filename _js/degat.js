@@ -16,6 +16,7 @@ let infligeDegat = function(vaisseau, obstacle) {
 
     if (obstacle.hasAttribute('data-degat')) {
         vaisseau.degat += 1 / vaisseau.vitesse;
+        JAUGE.style.clipPath = `polygon(0 0, ${vaisseau.degat}% 0, ${vaisseau.degat}% 100%, 0 100%)`;
     } 
 }
 
