@@ -89,6 +89,18 @@ body {
     background-position: -94px -45px;
 }
 
+.boom {
+    z-index: 1;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 96px;
+    height: 80px;
+    background-image: url(../_media/sprite.gif);
+    background-position: -106px -45px;
+}
+
 .obstacle {
     position: absolute;
     width: 100px;
