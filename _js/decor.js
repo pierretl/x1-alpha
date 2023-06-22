@@ -1,16 +1,14 @@
-console.log(PLANETE.clientWidth);
-console.log(SPRITE.CRATERE.W * 3);
-let nbCratere = 6;
+const NBCRATERE = 6;
 
 // créer un tableau des positions Y des images
 let imageCratereY = [];
-for (let i = 0; i < nbCratere; i++) {
+for (let i = 0; i < NBCRATERE; i++) {
     imageCratereY[i] = `${SPRITE.CRATERE.Y + i * SPRITE.CRATERE.H}`;
 }
 
 
 // Ajoute les images sur la planète
-for (let i = 0; i < nbCratere; i++) {
+for (let i = 0; i < NBCRATERE; i++) {
 
     const POSITION = ['start', 'center', 'end'];
 
@@ -37,7 +35,3 @@ for (let i = 0; i < nbCratere; i++) {
     //cratere.insertAdjacentText("afterbegin", valeurY); // debug
     
 }
-
-
-// align-self:center
-//justify-self:end
