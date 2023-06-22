@@ -1,0 +1,38 @@
+.scene {
+    position:relative;
+    max-width: var(--width-scene);
+    width: 100%;
+    height: 600px;
+    background: #000000 url(../_media/sol.gif) repeat-x bottom;
+}
+
+
+
+.limite {
+    position: absolute;
+    border: 1px solid orange;
+}
+.limite.--haut {
+    top: 56px;
+    left: 0;
+    right: 0;
+    height: 5px;
+}
+.limite.--droite {
+    top: 0;
+    right: -5px;
+    bottom: 0;
+    width: 5px;
+}
+.limite.--bas {
+    bottom: -5px;
+    left: 0;
+    right: 0;
+    height: 5px;
+}
+.limite.--gauche {
+    top: 0;
+    left: -5px;
+    bottom: 0;
+    width: 5px;
+}

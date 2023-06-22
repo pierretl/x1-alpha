@@ -1,0 +1,26 @@
+:root {
+    --width-vaisseau: 83;
+    --width-vaisseau-unit: calc(var(--width-vaisseau) * 1px);
+    --width-scene: calc(var(--width-vaisseau) * 10 * 1px);
+}
+
+* {
+    box-sizing: border-box;
+    image-rendering: optimizeSpeed;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: optimize-contrast;
+    image-rendering: pixelated;
+    -ms-interpolation-mode: nearest-neighbor;
+}
+
+body {
+    margin:0;
+    background: #222;
+    color: #f5f5f5;
+    font-family: system-ui, sans-serif;
+    min-height: 100vh;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}

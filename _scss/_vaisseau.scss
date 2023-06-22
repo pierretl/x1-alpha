@@ -1,0 +1,43 @@
+.vaisseau-spatial {
+    z-index: 0;
+    position:absolute;
+    width: var(--width-vaisseau-unit);
+    height: 31px;
+    background-image: url(../_media/sprite.gif);
+    background-position: 0 0;
+    transition: transform .2s, top .2s, right .1s, bottom .2s, left .1s;
+    transition-timing-function: linear, ease, ease, ease, ease;
+}
+
+
+
+.reacteur {
+    z-index: 1;
+    position: absolute;
+    width: 11px;
+    height: 28px;
+    top: 17px;
+    left:43px;
+    background-image: url(../_media/sprite.gif);
+    background-position: -83px 0;
+    transform-origin: 6px 4px;
+    transform: rotate(0deg);
+    transition: transform .2s;
+}
+.reacteur.--boost {
+    background-position: -94px 0;
+}
+
+
+
+.boom {
+    z-index: 1;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 96px;
+    height: 80px;
+    background-image: url(../_media/sprite.gif);
+    background-position: -106px 0;
+}

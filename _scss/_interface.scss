@@ -1,0 +1,38 @@
+.interface {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+    border: 1px solid #fff;
+}
+
+
+
+.obstacle {
+    position: absolute;
+    width: 100px;
+    height: 50px;
+    border: 1px solid red;
+}
+
+
+
+.jauge {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translate(-50%, 0);
+    width: 41px;
+    height: 8px;
+    background-image: url(../_media/sprite.gif);
+    background-position: -247px 0;
+}
+.jauge__degat {
+    width: 41px;
+    height: 8px;
+    background-image: url(../_media/sprite.gif);
+    background-position: -247px -8px;
+    clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
+    transition: clip-path .2s;
+}
