@@ -1,11 +1,18 @@
 const 
     OBSTACLES = document.querySelectorAll('[data-obstacle]'),
     JAUGE = document.getElementById('jauge-degat'),
+    PLANETE = document.getElementById('planete'),
     GRAVITE = 50,
     SPRITE = {
         EXPLOSION : {
             X: 106,
             Y: 0
+        },
+        CRATERE : {
+            X: 202,
+            Y: 224,
+            W: 69,
+            H: 17
         }
     };
 

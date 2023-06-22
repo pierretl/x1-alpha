@@ -30,3 +30,30 @@ let Timer = function (fn, t) {
         return this.stop().start();
     }
 }
+
+
+
+/**
+ * Obtient un chiffre aléatoire dans une intervalle
+ * 
+ * @param {number} min
+ * @param {number} max
+ */
+let chiffreAleatoire = function(max, min=0) {
+    return Math.ceil(Math.random() * (max - min) + min);
+}
+
+
+
+/**
+ * Supprime la valeur d'un tableau
+ * 
+ * @param {string} value
+ * @param {array} array
+ */
+let supprimeValeurDunTableau = function(value, array) {
+    let index = array.indexOf(value);
+    if (index > -1) {
+        array.splice(index, 1);
+    }
+}

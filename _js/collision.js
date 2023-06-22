@@ -33,7 +33,7 @@ let hitbox = function(vaisseau, dx, dy, obstacle) {
 
     //Haut
     if( vaisseau.element.offsetTop + vaisseau.element.clientHeight - 1 === obstacle.offsetTop ) {
-        obstacle.style.borderTopColor = 'cyan';
+        //obstacle.style.borderTopColor = 'cyan';
         gravite.stop();
         goto(dx, dy, 'haut');
         OBSTACLES.forEach(function(deuxiemeObstacle){
@@ -49,7 +49,7 @@ let hitbox = function(vaisseau, dx, dy, obstacle) {
      
     //Bas
     if ( vaisseau.element.offsetTop - 1 === obstacle.offsetTop + obstacle.clientHeight ) {
-        obstacle.style.borderBottomColor = 'cyan';
+        //obstacle.style.borderBottomColor = 'cyan';
         goto(dx, dy, 'bas');
         OBSTACLES.forEach(function(deuxiemeObstacle){
             if (enCollisionVaisseau(vaisseau, deuxiemeObstacle) && deuxiemeObstacle.id != obstacle.id) {
@@ -64,7 +64,7 @@ let hitbox = function(vaisseau, dx, dy, obstacle) {
 
     //Droite
     if (vaisseau.element.offsetLeft - 1 === obstacle.offsetLeft + obstacle.clientWidth ) {
-        obstacle.style.borderRightColor = 'cyan';
+        //obstacle.style.borderRightColor = 'cyan';
         goto(dx, dy, 'droite');
         OBSTACLES.forEach(function(deuxiemeObstacle){
             if (enCollisionVaisseau(vaisseau, deuxiemeObstacle) && deuxiemeObstacle.id != obstacle.id) {
@@ -79,7 +79,7 @@ let hitbox = function(vaisseau, dx, dy, obstacle) {
 
     //Gauche
     if (vaisseau.element.offsetLeft + vaisseau.element.clientWidth - 1 === obstacle.offsetLeft ) {
-        obstacle.style.borderLeftColor = 'cyan';
+        //obstacle.style.borderLeftColor = 'cyan';
         goto(dx, dy, 'gauche');
         OBSTACLES.forEach(function(deuxiemeObstacle){
             if (enCollisionVaisseau(vaisseau, deuxiemeObstacle) && deuxiemeObstacle.id != obstacle.id) {
