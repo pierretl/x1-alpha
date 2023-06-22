@@ -10,24 +10,24 @@
 <body>
 
     <div class="scene">
-        <div class="limite --droite js--obstacle"></div>
-        <div class="limite --gauche js--obstacle"></div>
-        <div class="limite --haut js--obstacle"></div>
-        <div class="limite --bas js--obstacle" data-degat></div>
-        <div class="obstacle js--obstacle" style="top: 300px;left:200px;"></div>
-        <div class="obstacle js--obstacle" style="top: 400px;left:400px;"></div>
-        <div class="obstacle js--obstacle" style="top: 400px;right:0px;"></div>
-        <div class="obstacle js--obstacle" style="top: 180px;left:600px;"></div>
-        <div class="obstacle js--obstacle" style="top: 300px;left:600px;"></div>
-        <div class="obstacle js--obstacle" style="top: 180px;left:220px;" data-degat></div>
-        <div class="obstacle js--obstacle" style="top: 220px;left:310px;width:300px;height:100px"></div>
-        <div class="vaisseau-spatial js--vaisseau">
-            <div class="reacteur js--reacteur" data-boost="--boost"></div>
-            <div class="boom js--boom"></div>
+        <div class="limite --droite" data-obstacle></div>
+        <div class="limite --gauche" data-obstacle></div>
+        <div class="limite --haut" data-obstacle></div>
+        <div class="limite --bas" data-obstacle data-degat></div>
+        <div class="obstacle" data-obstacle style="top: 300px;left:200px;"></div>
+        <div class="obstacle" data-obstacle style="top: 400px;left:400px;"></div>
+        <div class="obstacle" data-obstacle style="top: 400px;right:0px;"></div>
+        <div class="obstacle" data-obstacle style="top: 180px;left:600px;"></div>
+        <div class="obstacle" data-obstacle style="top: 300px;left:600px;"></div>
+        <div class="obstacle" data-obstacle style="top: 180px;left:220px;" data-degat></div>
+        <div class="obstacle" data-obstacle style="top: 220px;left:310px;width:300px;height:100px"></div>
+        <div class="vaisseau-spatial" id="vaisseau">
+            <div class="reacteur" data-boost="--boost" id="reacteur"></div>
+            <div class="boom" id="boom"></div>
         </div>
         <div class="interface">
             <div class="jauge">
-                <div class="jauge-degat js--jauge-degat"></div>
+                <div class="jauge-degat" id="jauge-degat"></div>
             </div>
         </div>
     </div>

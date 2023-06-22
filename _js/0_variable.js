@@ -1,6 +1,6 @@
 const 
-    OBSTACLES = document.querySelectorAll('.js--obstacle'),
-    JAUGE = document.querySelector('.js--jauge-degat'),
+    OBSTACLES = document.querySelectorAll('[data-obstacle]'),
+    JAUGE = document.getElementById('jauge-degat'),
     GRAVITE = 50,
     SPRITE = {
         EXPLOSION : {
@@ -12,12 +12,12 @@ const
 let vaisseau = {
     x: 50,
     y: 100,
-    element: document.querySelector('.js--vaisseau'),
-    reacteur: document.querySelector('.js--reacteur'),
+    element: document.getElementById('vaisseau'),
+    reacteur: document.getElementById('reacteur'),
     vitesse: 15,
     inclinaison: 10,
     degat: 0,
-    boom: document.querySelector('.js--boom'),
+    boom: document.getElementById('boom'),
     vie: 1
 };
 
