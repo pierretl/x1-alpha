@@ -37,8 +37,8 @@ function scriptJs(){
         .pipe(order([
             '_js/variable.js',
             '_js/utilitaire.js',
-            '_js/composant/*.js'
-        ]))
+            '_js/composant/**/*.js'
+        ], { base: './' }))
         .pipe(concat('script.js'))
         .pipe(rename({suffix: '.min'}))
         .pipe(uglify())
