@@ -35,9 +35,9 @@ function styles(){
 function scriptJs(){
     return gulp.src('./_js/**/*.js')
         .pipe(order([
-            './_js/variable.js',
-            './_js/utilitaire.js',
-            './_js/composant/*.js'
+            '_js/variable.js',
+            '_js/utilitaire.js',
+            '_js/composant/*.js'
         ]))
         .pipe(concat('script.js'))
         .pipe(rename({suffix: '.min'}))
