@@ -13,7 +13,13 @@ let dessineLeDecor = function() {
         IMG_CRATERE = new Image(),
         SOL_TARGET_Y = SCENE.clientHeight - SPRITE.SOL.H,
         CRATERE_NOMBRE = 6,
-        CRATERE_MARGE = 10; 
+        CRATERE_MARGE = 10;
+
+
+    /**
+     * Dessine le ciel
+     */
+    CTX.fillRect(0, 0, SCENE.clientWidth, SCENE.clientHeight);
 
 
 
@@ -36,7 +42,6 @@ let dessineLeDecor = function() {
         }
     };
     IMG_SOL.src = SPRITE.SRC;
-
 
     
     /**
@@ -74,6 +79,7 @@ let dessineLeDecor = function() {
         }
     };   
     IMG_CRATERE.src = SPRITE.SRC;
+
 }
 
 
