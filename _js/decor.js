@@ -2,69 +2,69 @@
  * Initilise la taille du canvas
  */
 DECOR.setAttribute('width', SCENE.clientWidth);
-DECOR.setAttribute('height', '90');
+DECOR.setAttribute('height', SCENE.clientHeight);
 
 
 
-/**
- * Dessine le sol de la planete
- */
-let sol = function() {
-    const ctx = DECOR.getContext('2d');
-    const img = new Image();
+let dessineLeDecor = function() {
+    const 
+        CTX = DECOR.getContext('2d'),
+        IMG_SOL = new Image(),
+        IMG_CRATERE = new Image(),
+        SOL_TARGET_Y = SCENE.clientHeight - SPRITE.SOL.H,
+        CRATERE_NOMBRE = 6,
+        CRATERE_MARGE = 10; 
 
-    img.onload = () => {
+
+
+    /**
+     * Dessine le sol de la planete
+     */
+    IMG_SOL.onload = () => {
         for (let i = 0; i < Math.ceil(SCENE.clientWidth / SPRITE.SOL.W); i++) {
-            ctx.drawImage(
-                img, // image
+            CTX.drawImage(
+                IMG_SOL, // image
                 SPRITE.SOL.X, // source x
                 SPRITE.SOL.Y, // source y
                 SPRITE.SOL.W, // source width
                 SPRITE.SOL.H, // source height
                 i * SPRITE.SOL.W,  // target x
-                0, // target y
+                SOL_TARGET_Y, // target y
                 SPRITE.SOL.W, // target width
                 SPRITE.SOL.H // target height
             );
         }
     };
-    img.src = SPRITE.SRC;
-}
+    IMG_SOL.src = SPRITE.SRC;
 
 
-
-/**
- * Ajoute des cratères
- */
-let crateres = function() {
-    const 
-        ctx = DECOR.getContext('2d'),
-        img = new Image(),
-        nbCratere = 6,
-        marge = 10;
-
+    
+    /**
+     * Ajoute des cratères
+     */
+    
     // créer un tableau des positions Y des images
     let imageCratereY = [];
-    for (let i = 0; i < nbCratere; i++) {
+    for (let i = 0; i < CRATERE_NOMBRE; i++) {
         imageCratereY[i] = `${SPRITE.CRATERE.Y + i * SPRITE.CRATERE.H}`;
     }
 
-    img.onload = () => {
-        for (let i = 0; i < nbCratere; i++) {
+    IMG_CRATERE.onload = () => {
+        for (let i = 0; i < CRATERE_NOMBRE; i++) {
             // tirage aléatoire
             let tirage = chiffreAleatoire(imageCratereY.length, 1);
 
             // récupére le contenu du tableau tié au sort
             let valeurY = imageCratereY[tirage - 1];
 
-            ctx.drawImage(
-                img, // image
+            CTX.drawImage(
+                IMG_CRATERE, // image
                 SPRITE.CRATERE.X, // source x
                 valeurY, // source y
                 SPRITE.CRATERE.W, // source width
                 SPRITE.CRATERE.H, // source height
-                i * Math.ceil(SCENE.clientWidth / nbCratere),  // target x
-                chiffreAleatoire(DECOR.clientHeight - SPRITE.CRATERE.H, marge), // target y
+                i * Math.ceil(SCENE.clientWidth / CRATERE_NOMBRE),  // target x
+                SOL_TARGET_Y + chiffreAleatoire(SPRITE.SOL.H - SPRITE.CRATERE.H, CRATERE_MARGE), // target y
                 SPRITE.CRATERE.W, // target width
                 SPRITE.CRATERE.H // target height
             );
@@ -72,14 +72,10 @@ let crateres = function() {
             // supprime du tableau la valeur tiré au sort
             supprimeValeurDunTableau(valeurY, imageCratereY);
         }
-    };
-    img.src = SPRITE.SRC;
+    };   
+    IMG_CRATERE.src = SPRITE.SRC;
 }
 
 
 
-/**
- * Dessine le decor
- */
-sol();
-crateres();
+dessineLeDecor();
