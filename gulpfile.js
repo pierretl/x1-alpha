@@ -8,6 +8,7 @@ const browserSync = require('browser-sync').create();
 const concat = require('gulp-concat');
 const rename = require('gulp-rename');
 const uglify = require('gulp-uglify');
+const order = require('gulp-order');
 
 
 // compilation des styles CSS
@@ -32,7 +33,12 @@ function styles(){
 
 // compilation des scripts JavaScript
 function scriptJs(){
-    return gulp.src('./_js/*.js')
+    return gulp.src('./_js/**/*.js')
+        .pipe(order([
+            './_js/variable.js',
+            './_js/utilitaire.js',
+            './_js/composant/*.js'
+        ]))
         .pipe(concat('script.js'))
         .pipe(rename({suffix: '.min'}))
         .pipe(uglify())
