@@ -40,7 +40,7 @@ let Timer = function (fn, t) {
  * @param {number} max
  */
 let chiffreAleatoire = function(max, min=0) {
-    return Math.ceil(Math.random() * (max - min) + min);
+    return Math.round(Math.random() * (max - min) + min);
 }
 
 
