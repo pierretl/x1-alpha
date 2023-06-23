@@ -1,37 +1,85 @@
-const NBCRATERE = 6;
+/**
+ * Initilise la taille du canvas
+ */
+DECOR.setAttribute('width', SCENE.clientWidth);
+DECOR.setAttribute('height', '90');
 
-// créer un tableau des positions Y des images
-let imageCratereY = [];
-for (let i = 0; i < NBCRATERE; i++) {
-    imageCratereY[i] = `${SPRITE.CRATERE.Y + i * SPRITE.CRATERE.H}`;
+
+
+/**
+ * Dessine le sol de la planete
+ */
+let sol = function() {
+    const ctx = DECOR.getContext('2d');
+    const img = new Image();
+
+    img.onload = () => {
+        for (let i = 0; i < Math.ceil(SCENE.clientWidth / SPRITE.SOL.W); i++) {
+            ctx.drawImage(
+                img, // image
+                SPRITE.SOL.X, // source x
+                SPRITE.SOL.Y, // source y
+                SPRITE.SOL.W, // source width
+                SPRITE.SOL.H, // source height
+                i * SPRITE.SOL.W,  // target x
+                0, // target y
+                SPRITE.SOL.W, // target width
+                SPRITE.SOL.H // target height
+            );
+        }
+    };
+    img.src = SPRITE.SRC;
 }
 
 
-// Ajoute les images sur la planète
-for (let i = 0; i < NBCRATERE; i++) {
 
-    const POSITION = ['start', 'center', 'end'];
+/**
+ * Ajoute des cratères
+ */
+let crateres = function() {
+    const 
+        ctx = DECOR.getContext('2d'),
+        img = new Image(),
+        nbCratere = 6,
+        marge = 10;
 
-    // initialisation des cratères
-    let cratere = document.createElement('div');
-    cratere.classList.add('cratere');
-    cratere.style.width = `${SPRITE.CRATERE.W}px`;
-    cratere.style.height = `${SPRITE.CRATERE.H}px`;
-    cratere.style.alignSelf = POSITION[chiffreAleatoire(POSITION.length - 1)];
-    cratere.style.justifySelf = POSITION[chiffreAleatoire(POSITION.length - 1)];
+    // créer un tableau des positions Y des images
+    let imageCratereY = [];
+    for (let i = 0; i < nbCratere; i++) {
+        imageCratereY[i] = `${SPRITE.CRATERE.Y + i * SPRITE.CRATERE.H}`;
+    }
 
-    // tirage aléatoire
-    let tirage = chiffreAleatoire(imageCratereY.length);
+    img.onload = () => {
+        for (let i = 0; i < nbCratere; i++) {
+            // tirage aléatoire
+            let tirage = chiffreAleatoire(imageCratereY.length, 1);
 
-    // récupére le contenu du tableau tié au sort
-    let valeurY = imageCratereY[tirage - 1];
-    cratere.style.backgroundPosition = `-${SPRITE.CRATERE.X}px -${imageCratereY[tirage - 1]}px`;
+            // récupére le contenu du tableau tié au sort
+            let valeurY = imageCratereY[tirage - 1];
 
-    // supprime du tableau la valeur tiré au sort
-    supprimeValeurDunTableau(valeurY, imageCratereY);
+            ctx.drawImage(
+                img, // image
+                SPRITE.CRATERE.X, // source x
+                valeurY, // source y
+                SPRITE.CRATERE.W, // source width
+                SPRITE.CRATERE.H, // source height
+                i * Math.ceil(SCENE.clientWidth / nbCratere),  // target x
+                chiffreAleatoire(DECOR.clientHeight - SPRITE.CRATERE.H, marge), // target y
+                SPRITE.CRATERE.W, // target width
+                SPRITE.CRATERE.H // target height
+            );
 
-    //ajoute le cratère sur la planete
-    PLANETE.insertAdjacentElement("afterbegin", cratere);
-    //cratere.insertAdjacentText("afterbegin", valeurY); // debug
-    
+            // supprime du tableau la valeur tiré au sort
+            supprimeValeurDunTableau(valeurY, imageCratereY);
+        }
+    };
+    img.src = SPRITE.SRC;
 }
+
+
+
+/**
+ * Dessine le decor
+ */
+sol();
+crateres();

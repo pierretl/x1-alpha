@@ -8,21 +8,9 @@
 
 
 
-.planete {
+.sol {
     position: absolute;
-    bottom:0;
-    left: 0;
-    width: 100%;
-    height: 90px;
-    display: grid;
-    gap: 10px;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(2, 1fr);
-    background: #50474a url(../_media/planete.gif) repeat-x bottom;
-    padding: 5px;
-}
-.cratere {
-    background: url(../_media/sprite.gif) no-repeat;
+    bottom: 0;
 }
 
 

@@ -1,9 +1,11 @@
 const 
+    SCENE = document.getElementById('scene'),
+    DECOR = document.getElementById('sol');
     OBSTACLES = document.querySelectorAll('[data-obstacle]'),
     JAUGE = document.getElementById('jauge-degat'),
-    PLANETE = document.getElementById('planete'),
     GRAVITE = 50,
     SPRITE = {
+        SRC: '_media/sprite.gif',
         EXPLOSION : {
             X: 106,
             Y: 0
@@ -13,6 +15,12 @@ const
             Y: 224,
             W: 69,
             H: 17
+        },
+        SOL : {
+            X: 202,
+            Y: 326,
+            W: 45,
+            H: 90
         }
     };
 
