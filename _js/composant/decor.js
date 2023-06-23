@@ -6,9 +6,53 @@ DECOR.setAttribute('height', SCENE.clientHeight);
 
 
 
+/**
+ * Ajoute des étoiles  
+ * 
+ * @param {object} CTX HTMLElement.getContext('2d')
+ * @param {object} new Image()
+ * @param {number} spriteY
+ */
+let ajouteEtoile = function(ctx, img, spriteY) {
+    const
+        ETOILE_MAX_W = Math.ceil(SCENE.clientWidth / SPRITE.ETOILE.W),
+        ETOILE_MAX_H = Math.ceil(SCENE.clientHeight / SPRITE.ETOILE.H);
+
+    img.onload = () => {
+        for (let i = 0; i < ETOILE_MAX_W; i++) {
+            for (let j = 0; j < ETOILE_MAX_H; j++) {
+                if (chiffreAleatoire(30, 0) == 1) {
+                    ctx.drawImage(
+                        img, // image
+                        SPRITE.ETOILE.X, // source x
+                        spriteY, // source y
+                        SPRITE.ETOILE.W, // source width
+                        SPRITE.ETOILE.H, // source height
+                        i * SPRITE.ETOILE.W,  // target x
+                        j * SPRITE.ETOILE.H , // target y
+                        SPRITE.ETOILE.W, // target width
+                        SPRITE.ETOILE.H // target height
+                    );
+                }
+            }
+        }
+    };
+    img.src = SPRITE.SRC;
+}
+
+
+
+/**
+ * Génère le décor 
+ */
 let dessineLeDecor = function() {
     const 
         CTX = DECOR.getContext('2d'),
+        IMG_ETOILE1 = new Image(),
+        IMG_ETOILE2 = new Image(),
+        IMG_ETOILE3 = new Image(),
+        IMG_ETOILE4 = new Image(),
+        IMG_ETOILE5 = new Image(),
         IMG_SOL = new Image(),
         IMG_CRATERE = new Image(),
         SOL_TARGET_Y = SCENE.clientHeight - SPRITE.SOL.H,
@@ -16,10 +60,22 @@ let dessineLeDecor = function() {
         CRATERE_MARGE = 10;
 
 
+
     /**
      * Dessine le ciel
      */
     CTX.fillRect(0, 0, SCENE.clientWidth, SCENE.clientHeight);
+
+
+
+    /**
+     * Ajoute des étoiles
+     */
+    ajouteEtoile(CTX, IMG_ETOILE1, SPRITE.ETOILE.Y);
+    ajouteEtoile(CTX, IMG_ETOILE2, SPRITE.ETOILE.Y+SPRITE.ETOILE.H);
+    ajouteEtoile(CTX, IMG_ETOILE3, SPRITE.ETOILE.Y+2*SPRITE.ETOILE.H);
+    ajouteEtoile(CTX, IMG_ETOILE4, SPRITE.ETOILE.Y+3*SPRITE.ETOILE.H);
+    ajouteEtoile(CTX, IMG_ETOILE5, SPRITE.ETOILE.Y+4*SPRITE.ETOILE.H);
 
 
 
