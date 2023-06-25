@@ -10,6 +10,10 @@ const
             X: 106,
             Y: 0
         },
+        DEGAT : {
+            X: 0,
+            Y: 0
+        },
         CRATERE : {
             X: 202,
             Y: 224,

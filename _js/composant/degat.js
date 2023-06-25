@@ -16,6 +16,7 @@ let infligeDegat = function(vaisseau, obstacle) {
 
     if (obstacle.hasAttribute('data-degat')) {
         vaisseau.degat += 1 / vaisseau.vitesse;
+        animationDegat();
         JAUGE.style.clipPath = `polygon(0 0, ${vaisseau.degat}% 0, ${vaisseau.degat}% 100%, 0 100%)`;
     } 
 }
@@ -56,11 +57,44 @@ let animationExplosion = function() {
 }
 
 
+
 /**
- * Stop l'animation
+ * Animation de dégat
+ */
+let animationDegat = function() {
+    let position = SPRITE.DEGAT.Y;
+    const 
+        INTERVAL = 100,
+        ETAPE_TOTAL = 4,
+        DIFF = vaisseau.element.clientHeight;
+
+    tID2 = setInterval(() => {
+
+        vaisseau.element.style.backgroundPosition = `-${SPRITE.DEGAT.X}px -${position}px`;
+
+        if (position < ETAPE_TOTAL * DIFF) {
+
+            position = position + DIFF;
+
+        } else {
+
+            stopAnimationDegat();
+            vaisseau.element.style.backgroundPosition = `-${SPRITE.DEGAT.X}px -${SPRITE.DEGAT.Y}px`;
+
+        }
+
+    }, INTERVAL);
+}
+
+
+/**
+ * Stop les animations
  */
 let stopAnimationExplosion = function() {
     clearInterval(tID);
+}
+let stopAnimationDegat = function() {
+    clearInterval(tID2);
 }
 
 
@@ -68,5 +102,5 @@ let stopAnimationExplosion = function() {
 /**
  * Initialisation
  */
-let tID;
+let tID, tID2;
 
