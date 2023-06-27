@@ -17,7 +17,7 @@
     width: 11px;
     height: 28px;
     top: 17px;
-    left:43px;
+    left: 43px;
     background-image: url(../_media/sprite.gif);
     background-position: -83px 0;
     transform-origin: 6px 4px;
@@ -26,6 +26,16 @@
 }
 .reacteur.--boost {
     background-position: -94px 0;
+}
+
+
+
+.pince {
+    position: absolute;
+    width: 83px;
+    height: 38px;
+    background-image: url(../_media/sprite.gif);
+    background-position: 0 -155px;
 }
 
 

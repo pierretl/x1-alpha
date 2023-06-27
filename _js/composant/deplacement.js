@@ -31,6 +31,7 @@ let detectionClavier = function(e) {
     e.preventDefault();
     let k = e.key;
     keys[k] = e.type == 'keydown';
+    toucheClavier = k;
 };
 
 
@@ -102,6 +103,11 @@ let deplaceVaisseau = function(dx, dy){
             }
             
         })
+
+        
+        if (enCollisionVaisseau(vaisseau, CONTENEUR) && toucheClavier === ' ') {
+            chargement();
+        }
 
         if (deplacementLibre){
             goto(dx, dy, 'horizontal');

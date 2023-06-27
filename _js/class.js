@@ -57,4 +57,20 @@ const animationSpriteExplosion = class extends animationSprite {
     }
 
 }
+
+
+
+const animationSpriteChargement = class extends animationSprite {
+
+    verif() {
+        if (this.currentEtape == 7) {
+            this.element.style.backgroundPosition = '0px -421px';
+            this.element.style.height = '48px';
+            this.stop();
+            CONTENEUR.style.display = 'none';
+            return;
+        }
+    }
+
+}
   

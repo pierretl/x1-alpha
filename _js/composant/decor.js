@@ -55,6 +55,7 @@ let dessineLeDecor = function() {
         IMG_ETOILE5 = new Image(),
         IMG_SOL = new Image(),
         IMG_CRATERE = new Image(),
+        IMG_ENTREPOT = new Image(),
         SOL_TARGET_Y = SCENE.clientHeight - SPRITE.SOL.H,
         CRATERE_NOMBRE = 6,
         CRATERE_MARGE = 10;
@@ -135,6 +136,26 @@ let dessineLeDecor = function() {
         }
     };   
     IMG_CRATERE.src = SPRITE.SRC;
+
+
+
+    /**
+     * Ajout de l'entrepot
+     */
+    IMG_ENTREPOT.onload = () => {
+        CTX.drawImage(
+            IMG_ENTREPOT, // image
+            SPRITE.ENTREPOT.X, // source x
+            SPRITE.ENTREPOT.Y, // source y
+            SPRITE.ENTREPOT.W, // source width
+            SPRITE.ENTREPOT.H, // source height
+            40,  // target x
+            SCENE.clientHeight - ( SPRITE.ENTREPOT.H + 20), // target y
+            SPRITE.ENTREPOT.W, // target width
+            SPRITE.ENTREPOT.H // target height
+        );
+    };
+    IMG_ENTREPOT.src = SPRITE.SRC;
 
 }
 

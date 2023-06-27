@@ -2,6 +2,7 @@ const
     SCENE = document.getElementById('scene'),
     DECOR = document.getElementById('sol');
     OBSTACLES = document.querySelectorAll('[data-obstacle]'),
+    CONTENEUR = document.querySelector('[data-conteneur]'),
     JAUGE = document.getElementById('jauge-degat'),
     GRAVITE = 50,
     SPRITE = {
@@ -17,7 +18,7 @@ const
         CRATERE : {
             X: 202,
             Y: 224,
-            W: 69,
+            W: 45,
             H: 17
         },
         SOL : {
@@ -31,20 +32,36 @@ const
             Y: 0,
             W: 45,
             H: 45
+        },
+        ENTREPOT : {
+            X: 202,
+            Y: 432,
+            W: 142,
+            H: 124
+        },
+        PINCE : {
+            X: 0,
+            Y: 155,
+            W: 83,
+            H: 38
         }
     };
 
-let vaisseau = {
-    x: 50,
-    y: 100,
-    element: document.getElementById('vaisseau'),
-    reacteur: document.getElementById('reacteur'),
-    vitesse: 15,
-    inclinaison: 10,
-    degat: 0,
-    boom: document.getElementById('boom'),
-    vie: 1
-};
+let 
+    vaisseau = {
+        x: 50,
+        y: 100,
+        element: document.getElementById('vaisseau'),
+        reacteur: document.getElementById('reacteur'),
+        vitesse: 15,
+        inclinaison: 10,
+        degat: 0,
+        boom: document.getElementById('boom'),
+        pince: document.getElementById('pince'),
+        vie: 1
+    },
+    chargementPossible = false,
+    toucheClavier;
 
 
 
