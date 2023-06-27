@@ -37,6 +37,7 @@ function scriptJs(){
         .pipe(order([
             '_js/variable.js',
             '_js/utilitaire.js',
+            '_js/class.js',
             '_js/composant/**/*.js'
         ], { base: './' }))
         .pipe(concat('script.js'))
