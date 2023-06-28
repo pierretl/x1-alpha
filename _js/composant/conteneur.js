@@ -6,7 +6,7 @@ const chargement = function() {
         SPRITE.PINCE.H,
         vaisseau.pince,
         8,
-        100
+        50
     );
 
 }

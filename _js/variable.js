@@ -4,7 +4,7 @@ const
     OBSTACLES = document.querySelectorAll('[data-obstacle]'),
     CONTENEUR = document.querySelector('[data-conteneur]'),
     JAUGE = document.getElementById('jauge-degat'),
-    GRAVITE = 50,
+    GRAVITE = 100,
     SPRITE = {
         SRC: '_media/sprite.gif',
         EXPLOSION : {
@@ -58,6 +58,7 @@ let
         degat: 0,
         boom: document.getElementById('boom'),
         pince: document.getElementById('pince'),
+        pinceHitbox: document.getElementById('hitbox-pince'),
         vie: 1
     },
     chargementPossible = false,

@@ -105,7 +105,7 @@ let deplaceVaisseau = function(dx, dy){
         })
 
         
-        if (enCollisionVaisseau(vaisseau, CONTENEUR) && toucheClavier === ' ') {
+        if (enCollision(vaisseau.pinceHitbox, CONTENEUR) && toucheClavier === ' ') {
             chargement();
         }
 

@@ -3,4 +3,4 @@ var gravite = new Timer(function() {
 }, GRAVITE);
 
 // desactive la gravité
-gravite.stop();
+// gravite.stop();
