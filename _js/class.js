@@ -18,7 +18,7 @@ const animationSprite = class {
         this.nombreEtape = nombreEtape;
         this.delai = delai;
 
-        this.currentEtape = 0;
+        this.currentFrame = 0;
         this.animation = setInterval(
             this.start.bind(this),
             this.delai
@@ -27,30 +27,30 @@ const animationSprite = class {
 
     start() {
         
-        if (this.nombreEtape <= this.currentEtape) {
+        if (this.nombreEtape <= this.currentFrame) {
             this.stop();
             this.element.style.backgroundPosition = `-${this.spriteX}px -${this.spriteY}px`;
             return;
         }
 
-        this.element.style.backgroundPosition = `-${this.spriteX}px -${this.spriteY + this.spriteH * this.currentEtape}px`;
-        this.verif();
-        this.currentEtape = ++this.currentEtape;
+        this.element.style.backgroundPosition = `-${this.spriteX}px -${this.spriteY + this.spriteH * this.currentFrame}px`;
+        this.onFrame();
+        this.currentFrame = ++this.currentFrame;
     }
 
     stop() {
         clearInterval(this.animation);
     }
 
-    verif() {}
+    onFrame() {}
 };
 
 
 
 const animationSpriteExplosion = class extends animationSprite {
 
-    verif() {
-        if (this.currentEtape == 4) {
+    onFrame() {
+        if (this.currentFrame == 4) {
             vaisseau.element.style.backgroundImage = 'none';
             vaisseau.reacteur.style.backgroundImage = 'none';
         }
@@ -62,12 +62,12 @@ const animationSpriteExplosion = class extends animationSprite {
 
 const animationSpriteChargement = class extends animationSprite {
 
-    verif() {
-        if (this.currentEtape == 7) {
-            this.element.style.backgroundPosition = '0px -421px';
-            this.element.style.height = '48px';
-            this.stop();
+    onFrame() {
+        if (this.currentFrame == 7) {
             CONTENEUR.style.display = 'none';
+        }
+        if (this.currentFrame == 13) {
+            this.stop();
             return;
         }
     }

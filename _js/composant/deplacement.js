@@ -106,7 +106,14 @@ let deplaceVaisseau = function(dx, dy){
 
         
         if (enCollision(vaisseau.pinceHitbox, CONTENEUR) && toucheClavier === ' ') {
-            chargement();
+            new animationSpriteChargement (
+                SPRITE.PINCE.Y,
+                SPRITE.PINCE.X,
+                SPRITE.PINCE.H,
+                vaisseau.pince,
+                14,
+                50
+            );
         }
 
         if (deplacementLibre){
