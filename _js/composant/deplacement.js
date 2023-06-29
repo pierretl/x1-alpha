@@ -104,8 +104,43 @@ let deplaceVaisseau = function(dx, dy){
             
         })
 
+        DESTINATIONS.forEach(function(destination){
+
+            let decharger;
+
+            if (enCollision(vaisseau.cargaisonHitbox, destination)) {
+
+                destination.classList.remove('--actif');
+                destination.classList.add('--ready');
+                decharger = false;
+
+                if(toucheClavier === ' ') {
+
+                    new animationSpriteDeChargement (
+                        SPRITE.PINCE.Y,
+                        SPRITE.PINCE.X,
+                        SPRITE.PINCE.H,
+                        vaisseau.pince,
+                        14,
+                        50,
+                        true
+                    );
+                    decharger = true;
+
+                }
+
+            } else {
+                if (decharger === false) {
+                    destination.classList.add('--actif');
+                }
+                destination.classList.remove('--ready');
+
+            } 
+            
+        })
+
         
-        if (enCollision(vaisseau.pinceHitbox, CONTENEUR) && toucheClavier === ' ') {
+        if (enCollision(vaisseau.cargaisonHitbox, CONTENEUR) && toucheClavier === ' ') {
             new animationSpriteChargement (
                 SPRITE.PINCE.Y,
                 SPRITE.PINCE.X,

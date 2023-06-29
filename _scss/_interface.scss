@@ -9,30 +9,6 @@
 
 
 
-.obstacle {
-    position: absolute;
-    width: 100px;
-    height: 50px;
-    border: 1px solid red;
-}
-
-.hitbox-conteneur {
-    position: absolute;
-    width: 3px;
-    height: 18px;
-    bottom: 32px;
-    left:87px;
-    //background-color: red;
-}
-.conteneur {
-    transform: translate(-50%, 0);
-    width: 29px;
-    height: 18px;
-    background-image: url(../_media/sprite.gif);
-    background-position: -202px -556px;
-}
-
-
 .jauge {
     position: absolute;
     top: 20px;
@@ -50,4 +26,80 @@
     background-position: -202px -424px;
     clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
     transition: clip-path .2s;
+}
+
+
+
+.obstacle {
+    position: absolute;
+    width: 100px;
+    height: 50px;
+    border: 1px solid red;
+}
+.conteneur {
+    width: 29px;
+    height: 18px;
+    background-image: url(../_media/sprite.gif);
+    background-position: -202px -556px;
+    transform: translate(-50%, 0);
+}
+
+
+
+.hitbox-conteneur {
+    position: absolute;
+    width: 3px;
+    height: 18px;
+    bottom: 32px;
+    left:87px;
+    //background-color: red;
+}
+
+.hitbox-destination {
+    position: absolute;
+    width: 10px;
+    height: 30px;
+    bottom: 50px;
+    right:90px;
+    //background-color: red;
+}
+.hitbox-destination .conteneur {
+    position: absolute;
+    top: 100%;
+    left:50%;
+    transform: translate(-50%,5px);
+}
+.destination {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translate(-50%, 0);
+    width: 56px;
+    height: 32px;
+    background-image: url(../_media/sprite.gif);
+    background-position: -202px -574px;
+}
+.destination:after {
+    content: '';
+    width: 56px;
+    height: 32px;
+    background-image: url(../_media/sprite.gif);
+}
+.hitbox-destination.--actif .destination:after {
+    display: block;
+    background-position: -202px -606px;
+
+    animation-duration: .8s;
+    animation-name: clignote;
+    animation-iteration-count: infinite;
+}
+.hitbox-destination.--ready .destination:after {
+    display: block;
+    background-position: -202px -638px;
+}
+
+@keyframes clignote {
+    0%   { opacity:1 }
+    40%  { opacity:0 }
+    100% { opacity:1 }
 }

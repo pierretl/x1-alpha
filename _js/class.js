@@ -10,19 +10,28 @@
  */
 const animationSprite = class {
 
-    constructor(spriteY, spriteX, spriteH, element, nombreEtape, delai) {
+    constructor(spriteY, spriteX, spriteH, element, nombreEtape, delai, rewindAnime=false) {
         this.spriteY = spriteY;
         this.spriteX = spriteX;
         this.spriteH = spriteH;
         this.element = element;
         this.nombreEtape = nombreEtape;
         this.delai = delai;
+        this.rewindAnime = rewindAnime;
 
-        this.currentFrame = 0;
-        this.animation = setInterval(
-            this.start.bind(this),
-            this.delai
-        )
+        if (this.rewindAnime) {
+            this.currentFrame = nombreEtape;
+            this.animation = setInterval(
+                this.rewind.bind(this),
+                this.delai
+            )
+        } else {
+            this.currentFrame = 0;
+            this.animation = setInterval(
+                this.start.bind(this),
+                this.delai
+            )
+        }
     }
 
     start() {
@@ -36,6 +45,20 @@ const animationSprite = class {
         this.element.style.backgroundPosition = `-${this.spriteX}px -${this.spriteY + this.spriteH * this.currentFrame}px`;
         this.onFrame();
         this.currentFrame = ++this.currentFrame;
+    }
+
+    rewind() {
+
+        if (this.currentFrame === 0) {
+            this.stop();
+            this.element.style.backgroundPosition = `-${this.spriteX}px -${this.spriteY}px`;
+            return;
+        }
+
+        this.element.style.backgroundPosition = `-${this.spriteX}px -${this.spriteY + this.spriteH * this.currentFrame}px`;
+        this.onFrame();
+        this.currentFrame = --this.currentFrame;
+
     }
 
     stop() {
@@ -69,6 +92,19 @@ const animationSpriteChargement = class extends animationSprite {
         if (this.currentFrame == 13) {
             this.stop();
             return;
+        }
+    }
+
+}
+
+
+
+const animationSpriteDeChargement = class extends animationSprite {
+
+    onFrame() {
+        if (this.currentFrame == 7) {
+            document.querySelector('[data-destination] .conteneur').classList.remove('hide');
+            document.querySelector('[data-destination]').classList.remove('--actif');
         }
     }
 

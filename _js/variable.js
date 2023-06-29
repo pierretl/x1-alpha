@@ -3,6 +3,7 @@ const
     DECOR = document.getElementById('sol');
     OBSTACLES = document.querySelectorAll('[data-obstacle]'),
     CONTENEUR = document.querySelector('[data-conteneur]'),
+    DESTINATIONS = document.querySelectorAll('[data-destination]'),
     JAUGE = document.getElementById('jauge-degat'),
     GRAVITE = 100,
     SPRITE = {
@@ -58,7 +59,7 @@ let
         degat: 0,
         boom: document.getElementById('boom'),
         pince: document.getElementById('pince'),
-        pinceHitbox: document.getElementById('hitbox-pince'),
+        cargaisonHitbox: document.getElementById('hitbox-cargaison'),
         vie: 1
     },
     chargementPossible = false,
