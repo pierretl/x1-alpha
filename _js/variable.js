@@ -64,10 +64,3 @@ let
     },
     chargementPossible = false,
     toucheClavier;
-
-
-
-/* Ajout d'id pour différencier les obstacles */
-OBSTACLES.forEach(function(obstacle, index){
-    obstacle.setAttribute("id", "obstacle-"+index);
-});

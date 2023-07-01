@@ -57,3 +57,23 @@ let supprimeValeurDunTableau = function(value, array) {
         array.splice(index, 1);
     }
 }
+
+
+
+/**
+ * Ajout d'id pour différencier les éléments
+ * 
+ */
+const ajoutId = function(array) {
+    array.forEach(function(nodeList){
+        nodeList[0].forEach(function(el,index){
+            el.setAttribute("id", `${nodeList[1]}-${index}`);
+        });
+    });
+}
+
+
+ajoutId([
+    [DESTINATIONS, 'destination' ],
+    [OBSTACLES, 'obstacle']
+]);
