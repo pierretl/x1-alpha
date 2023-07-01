@@ -130,7 +130,7 @@ let deplaceVaisseau = function(dx, dy){
                         EMITTER_DECHARGE,
                         true
                     );
-                    EMITTER_DECHARGE.on('frameEvent', VaisseauDechargeConsequence);
+                    EMITTER_DECHARGE.on('frameEvent', consequenceVaisseauDecharge);
 
                     decharger = true;
 
@@ -159,7 +159,7 @@ let deplaceVaisseau = function(dx, dy){
                 500,
                 EMITTER_CHARGE
             );
-            EMITTER_CHARGE.on('frameEvent', VaisseauChargeConsequence);
+            EMITTER_CHARGE.on('frameEvent', consequenceVaisseauCharge);
 
         }
         

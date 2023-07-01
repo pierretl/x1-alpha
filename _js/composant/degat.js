@@ -19,7 +19,7 @@ let infligeDegat = function(vaisseau, obstacle) {
                 500,
                 EMITTER_EXPLOSION
             );
-            EMITTER_EXPLOSION.on('frameEvent', explosionVaisseauConsequence);
+            EMITTER_EXPLOSION.on('frameEvent', consequenceExplosionVaisseau);
 
             vaisseau.vie--;
         }
@@ -39,7 +39,7 @@ let infligeDegat = function(vaisseau, obstacle) {
             100,
             EMITTER_DEGAT
         );
-        EMITTER_DEGAT.on('frameEvent', degatVaisseauConsequence);
+        EMITTER_DEGAT.on('frameEvent', consequenceDegatVaisseau);
 
         JAUGE.style.clipPath = `polygon(0 0, ${vaisseau.degat}% 0, ${vaisseau.degat}% 100%, 0 100%)`;
     } 

@@ -51,7 +51,7 @@ const animationSprite = function(element, spriteX, spriteY, spriteH, totalFrame,
 
 
 
-const explosionVaisseauConsequence = (frame) => {
+const consequenceExplosionVaisseau = (frame) => {
     if (frame == 4) {
         vaisseau.element.style.backgroundImage = 'none';
         vaisseau.reacteur.style.backgroundImage = 'none';
@@ -61,7 +61,7 @@ const explosionVaisseauConsequence = (frame) => {
 
 
 
-const VaisseauChargeConsequence = (frame) => {
+const consequenceVaisseauCharge = (frame) => {
     if (frame == 7) {
         CONTENEUR.style.display = 'none';
     }
@@ -69,7 +69,7 @@ const VaisseauChargeConsequence = (frame) => {
 
 
 
-const VaisseauDechargeConsequence = (frame) => {
+const consequenceVaisseauDecharge = (frame) => {
     if (frame == 7) {
         document.querySelector('[data-destination] .conteneur').classList.remove('hide');
         document.querySelector('[data-destination]').classList.remove('--actif');
@@ -78,9 +78,8 @@ const VaisseauDechargeConsequence = (frame) => {
 
 
 
-const degatVaisseauConsequence = (frame) => {
+const consequenceDegatVaisseau = (frame) => {
     if (frame == 5) {
         vaisseau.element.style.removeProperty('background-position');
-        console.log('test');
     }
 };
