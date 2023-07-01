@@ -8,14 +8,19 @@ let infligeDegat = function(vaisseau, obstacle) {
 
     if (Math.round(vaisseau.degat) >= 100) {
         if (vaisseau.vie > 0) {
-            new animationSpriteExplosion (
-                SPRITE.EXPLOSION.Y,
-                SPRITE.EXPLOSION.X,
-                vaisseau.boom.clientHeight,
+
+            const EMITTER_EXPLOSION = new EventEmitter();
+            animationSprite(
                 vaisseau.boom,
-                9,
-                100
+                SPRITE.EXPLOSION.X,
+                SPRITE.EXPLOSION.Y,
+                vaisseau.boom.clientHeight,
+                10,
+                500,
+                EMITTER_EXPLOSION
             );
+            EMITTER_EXPLOSION.on('frameEvent', explosionVaisseauConsequence);
+
             vaisseau.vie--;
         }
         return;
@@ -23,14 +28,19 @@ let infligeDegat = function(vaisseau, obstacle) {
 
     if (obstacle.hasAttribute('data-degat')) {
         vaisseau.degat += 1 / vaisseau.vitesse;
-        new animationSprite (
-            SPRITE.DEGAT.Y,
-            SPRITE.DEGAT.X,
-            vaisseau.element.clientHeight,
+
+        const EMITTER_DEGAT = new EventEmitter();
+        animationSprite(
             vaisseau.element,
-            4,
-            100
+            SPRITE.DEGAT.X,
+            SPRITE.DEGAT.Y,
+            vaisseau.element.clientHeight,
+            5,
+            100,
+            EMITTER_DEGAT
         );
+        EMITTER_DEGAT.on('frameEvent', degatVaisseauConsequence);
+
         JAUGE.style.clipPath = `polygon(0 0, ${vaisseau.degat}% 0, ${vaisseau.degat}% 100%, 0 100%)`;
     } 
 }

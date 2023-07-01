@@ -116,15 +116,22 @@ let deplaceVaisseau = function(dx, dy){
 
                 if(toucheClavier === ' ') {
 
-                    new animationSpriteDeChargement (
-                        SPRITE.PINCE.Y,
-                        SPRITE.PINCE.X,
-                        SPRITE.PINCE.H,
+                    gravite.stop();
+
+                    const EMITTER_DECHARGE = new EventEmitter();
+                    console.log(typeof(EMITTER_DECHARGE));
+                    animationSprite(
                         vaisseau.pince,
+                        SPRITE.PINCE.X,
+                        SPRITE.PINCE.Y,
+                        SPRITE.PINCE.H,
                         14,
-                        50,
+                        500,
+                        EMITTER_DECHARGE,
                         true
                     );
+                    EMITTER_DECHARGE.on('frameEvent', VaisseauDechargeConsequence);
+
                     decharger = true;
 
                 }
@@ -141,15 +148,22 @@ let deplaceVaisseau = function(dx, dy){
 
         
         if (enCollision(vaisseau.cargaisonHitbox, CONTENEUR) && toucheClavier === ' ') {
-            new animationSpriteChargement (
-                SPRITE.PINCE.Y,
-                SPRITE.PINCE.X,
-                SPRITE.PINCE.H,
+            
+            const EMITTER_CHARGE = new EventEmitter();
+            animationSprite(
                 vaisseau.pince,
+                SPRITE.PINCE.X,
+                SPRITE.PINCE.Y,
+                SPRITE.PINCE.H,
                 14,
-                50
+                500,
+                EMITTER_CHARGE
             );
+            EMITTER_CHARGE.on('frameEvent', VaisseauChargeConsequence);
+
         }
+        
+        
 
         if (deplacementLibre){
             goto(dx, dy, 'horizontal');
