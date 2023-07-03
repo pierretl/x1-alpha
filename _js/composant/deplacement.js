@@ -11,13 +11,15 @@ let keys = {};
  */
 document.addEventListener('keydown', function(e) {
     detectionClavier(e);
-    gravite.stop();
 });
 document.addEventListener('keyup', function(e) {
     detectionClavier(e);
     vaisseau.element.style.transform = '';
     vaisseau.reacteur.style.transform = '';
+    acceleration = 0; //re initialise l'acceleration
     gravite.start();
+    //deplaceVaisseau(0, 0); // init deplacement si pas de gravité
+    
 });
 
 
@@ -43,7 +45,7 @@ let detectionClavier = function(e) {
  * @param {number} dy
  * @param {string} direction
  */
-let goto = function(dx, dy, direction ) {
+let goto = function(dx, dy, direction) {
     switch(direction){
         case 'horizontal':
             vaisseau.x += (dx||0);
@@ -84,7 +86,22 @@ let goto = function(dx, dy, direction ) {
  */
 let deplaceVaisseau = function(dx, dy){
 
-    for (var i = 0; i < vaisseau.vitesse; i++) {
+
+
+    acceleration= ++acceleration;
+
+    let getAcceleration = function(acceleration ) {
+
+        if ((acceleration > vaisseau.vitesseMax)) {
+            return vaisseau.vitesseMax;
+        }
+
+        return acceleration;
+    }
+
+
+
+    for (var i = 0; i < getAcceleration(acceleration); i++) {
 
         let deplacementLibre = true;
 
@@ -116,8 +133,6 @@ let deplaceVaisseau = function(dx, dy){
 
                 if(toucheClavier === ' ') {
 
-                    gravite.stop();
-
                     const EMITTER_DECHARGE = new EventEmitter();
                     console.log(typeof(EMITTER_DECHARGE));
                     animationSprite(
@@ -146,8 +161,9 @@ let deplaceVaisseau = function(dx, dy){
             
         })
 
+
         
-        if (enCollision(vaisseau.cargaisonHitbox, CONTENEUR) && toucheClavier === ' ') {
+        if (enCollision(vaisseau.cargaisonHitbox, CONTENEUR) && toucheClavier === ' ' ) {
             
             const EMITTER_CHARGE = new EventEmitter();
             animationSprite(
@@ -221,7 +237,7 @@ var controlVaisseau = function(){
 
 
 /**
- * Met ajour la position du vaisseau sur la scène
+ * Met à jour la position du vaisseau sur la scène
  */
 deplaceVaisseau();
 

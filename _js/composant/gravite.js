@@ -1,6 +1,6 @@
 var gravite = new Timer(function() {
     deplaceVaisseau(0, 1);
-}, GRAVITE);
+}, DELAI_GRAVITE);
 
 // desactive la gravité
 // gravite.stop();

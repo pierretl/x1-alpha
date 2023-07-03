@@ -48,7 +48,6 @@ let hitbox = function(vaisseau, dx, dy, obstacle) {
     //Haut
     if( vaisseau.element.offsetTop + vaisseau.element.clientHeight - 1 === obstacle.offsetTop ) {
         //obstacle.style.borderTopColor = 'cyan';
-        gravite.stop();
         goto(dx, dy, 'haut');
         OBSTACLES.forEach(function(deuxiemeObstacle){
             if (enCollisionVaisseau(vaisseau, deuxiemeObstacle) && deuxiemeObstacle.id != obstacle.id) {

@@ -27,7 +27,8 @@ let infligeDegat = function(vaisseau, obstacle) {
     }
 
     if (obstacle.hasAttribute('data-degat')) {
-        vaisseau.degat += 1 / vaisseau.vitesse;
+        //vaisseau.degat += 1 / vaisseau.vitesseMax;
+        vaisseau.degat += 1; // plus le vaisseau a de la vitesse plus il prend
 
         const EMITTER_DEGAT = new EventEmitter();
         animationSprite(

@@ -5,7 +5,7 @@ const
     CONTENEUR = document.querySelector('[data-conteneur]'),
     DESTINATIONS = document.querySelectorAll('[data-destination]'),
     JAUGE = document.getElementById('jauge-degat'),
-    GRAVITE = 100,
+    DELAI_GRAVITE = 100,
     SPRITE = {
         SRC: '_media/sprite.gif',
         EXPLOSION : {
@@ -54,7 +54,7 @@ let
         y: 100,
         element: document.getElementById('vaisseau'),
         reacteur: document.getElementById('reacteur'),
-        vitesse: 15,
+        vitesseMax: 15,
         inclinaison: 10,
         degat: 0,
         boom: document.getElementById('boom'),
@@ -63,4 +63,5 @@ let
         vie: 1
     },
     chargementPossible = false,
-    toucheClavier;
+    toucheClavier,
+    acceleration = 0;

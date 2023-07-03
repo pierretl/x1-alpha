@@ -15,8 +15,8 @@ const animationSprite = function(element, spriteX, spriteY, spriteH, totalFrame,
     let positionY = rewindAnime ? spriteH * totalFrame : 0;
     let currentFrame = rewindAnime ? totalFrame + 1 : 1;
 
-    function moveSprite(){        
-    
+    function moveSprite(){   
+
         setTimeout(function(){
   
             element.style.backgroundPosition = `-${spriteX}px -${spriteY + positionY}px`;
@@ -30,19 +30,32 @@ const animationSprite = function(element, spriteX, spriteY, spriteH, totalFrame,
                 currentFrame = --currentFrame;
 
                 if (currentFrame > 0) {
-                    requestAnimationFrame(moveSprite)
+                    gravite.stop(); 
+                    requestAnimationFrame(moveSprite);
+                } else {
+                    //permet de relancer la gravitation sans etre dans un boucle infini
+                    document.dispatchEvent(new KeyboardEvent('keyup', {
+                        'key': 'ArrowDown'
+                    }));
                 }
             } else {
                 positionY += spriteH;
                 currentFrame = ++currentFrame;
 
                 if (currentFrame <= totalFrame) {
-                    requestAnimationFrame(moveSprite)
+                    gravite.stop(); 
+                    requestAnimationFrame(moveSprite);
+                } else {
+                    //permet de relancer la gravitation sans etre dans un boucle infini
+                    document.dispatchEvent(new KeyboardEvent('keyup', {
+                        'key': 'ArrowDown'
+                    }));
                 }
+
             }
 
     
-        }, duree / totalFrame)
+        }, duree / totalFrame);
     }
 
     requestAnimationFrame(moveSprite);
