@@ -101,3 +101,14 @@
     40%  { opacity:0 }
     100% { opacity:1 }
 }
+
+.hitbox-destination .asteroid {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translate(-50%, 0);
+    width: 66px;
+    height: 40px;
+    background-image: url(../_media/sprite.gif);
+    background-position: -247px -392px;
+}
