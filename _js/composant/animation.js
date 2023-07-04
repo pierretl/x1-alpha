@@ -78,6 +78,7 @@ const consequenceVaisseauCharge = (frame) => {
     if (frame == 7) {
         CONTENEUR.style.display = 'none';
     }
+    vaisseau.cargaison = true;
 };
 
 
@@ -87,6 +88,7 @@ const consequenceVaisseauDecharge = (frame) => {
         document.querySelector('[data-destination] .conteneur').classList.remove('hide');
         document.querySelector('[data-destination]').classList.remove('--actif');
     }
+    vaisseau.cargaison = false;
 };
 
 

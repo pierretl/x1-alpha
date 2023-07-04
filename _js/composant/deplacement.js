@@ -131,7 +131,10 @@ let deplaceVaisseau = function(dx, dy){
                 destination.classList.add('--ready');
                 decharger = false;
 
-                if(toucheClavier === ' ') {
+                if (
+                        toucheClavier === ' ' &&
+                        vaisseau.cargaison === true
+                   ) {
 
                     const EMITTER_DECHARGE = new EventEmitter();
                     console.log(typeof(EMITTER_DECHARGE));
@@ -162,8 +165,12 @@ let deplaceVaisseau = function(dx, dy){
         })
 
 
-        
-        if (enCollision(vaisseau.cargaisonHitbox, CONTENEUR) && toucheClavier === ' ' ) {
+        // Dock de chargement
+        if ( 
+                enCollision(vaisseau.cargaisonHitbox, CONTENEUR) && 
+                toucheClavier === ' ' &&
+                vaisseau.cargaison === false
+            ) {
             
             const EMITTER_CHARGE = new EventEmitter();
             animationSprite(

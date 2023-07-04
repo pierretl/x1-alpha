@@ -60,7 +60,8 @@ let
         boom: document.getElementById('boom'),
         pince: document.getElementById('pince'),
         cargaisonHitbox: document.getElementById('hitbox-cargaison'),
-        vie: 1
+        vie: 1,
+        cargaison: false
     },
     chargementPossible = false,
     toucheClavier,
