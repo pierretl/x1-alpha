@@ -6,6 +6,8 @@ const
     DESTINATIONS = document.querySelectorAll('[data-destination]'),
     JAUGE = document.getElementById('jauge-degat'),
     DELAI_GRAVITE = 100,
+    CSS_DESTINATION_ACTIF = '--actif',
+    CSS_DESTINATION_READY = '--ready',
     SPRITE = {
         SRC: '_media/sprite.gif',
         EXPLOSION : {

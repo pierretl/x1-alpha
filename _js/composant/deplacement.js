@@ -123,21 +123,28 @@ let deplaceVaisseau = function(dx, dy){
 
         DESTINATIONS.forEach(function(destination){
 
-            let decharger;
+            if( destination.dataset.destination == 'actif' ) {
+                destination.classList.add(CSS_DESTINATION_ACTIF);
+            }
 
-            if (enCollision(vaisseau.cargaisonHitbox, destination)) {
+            if (
+                enCollision(vaisseau.cargaisonHitbox, destination) &&
+                destination.dataset.destination == 'actif' &&
+                vaisseau.cargaison === true
+            ) {
 
-                destination.classList.remove('--actif');
-                destination.classList.add('--ready');
-                decharger = false;
+                destination.classList.remove(CSS_DESTINATION_ACTIF);
+                destination.classList.add(CSS_DESTINATION_READY);
 
                 if (
-                        toucheClavier === ' ' &&
-                        vaisseau.cargaison === true
+                        toucheClavier === ' '
                    ) {
 
+                    destination.dataset.destination = '';
+                    destination.classList.remove(CSS_DESTINATION_ACTIF);
+                    destination.classList.remove(CSS_DESTINATION_READY);
+
                     const EMITTER_DECHARGE = new EventEmitter();
-                    console.log(typeof(EMITTER_DECHARGE));
                     animationSprite(
                         vaisseau.pince,
                         SPRITE.PINCE.X,
@@ -146,21 +153,18 @@ let deplaceVaisseau = function(dx, dy){
                         14,
                         500,
                         EMITTER_DECHARGE,
-                        true
+                        true,
+                        destination
                     );
                     EMITTER_DECHARGE.on('frameEvent', consequenceVaisseauDecharge);
-
-                    decharger = true;
 
                 }
 
             } else {
-                if (decharger === false) {
-                    destination.classList.add('--actif');
-                }
-                destination.classList.remove('--ready');
 
-            } 
+                destination.classList.remove(CSS_DESTINATION_READY);
+
+            }
             
         })
 

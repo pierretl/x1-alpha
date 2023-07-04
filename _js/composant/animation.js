@@ -9,8 +9,9 @@
  * @param {number} duree
  * @param {object} eventEmitter
  * @param {boolean} rewindAnime invers le sens de lecture de l'animation
+ * @param {HTMLElement} elementInteraction
  */
-const animationSprite = function(element, spriteX, spriteY, spriteH, totalFrame, duree, eventEmitter=false, rewindAnime=false) {
+const animationSprite = function(element, spriteX, spriteY, spriteH, totalFrame, duree, eventEmitter=false, rewindAnime=false, elementInteraction=false) {
 
     let positionY = rewindAnime ? spriteH * totalFrame : 0;
     let currentFrame = rewindAnime ? totalFrame + 1 : 1;
@@ -22,7 +23,7 @@ const animationSprite = function(element, spriteX, spriteY, spriteH, totalFrame,
             element.style.backgroundPosition = `-${spriteX}px -${spriteY + positionY}px`;
             
             if (eventEmitter) {
-                eventEmitter.emit('frameEvent', currentFrame);
+                eventEmitter.emit('frameEvent', {currentFrame:currentFrame,elementInteraction:elementInteraction});
             }
     
             if (rewindAnime) {
@@ -64,8 +65,8 @@ const animationSprite = function(element, spriteX, spriteY, spriteH, totalFrame,
 
 
 
-const consequenceExplosionVaisseau = (frame) => {
-    if (frame == 4) {
+const consequenceExplosionVaisseau = (data) => {
+    if (data['currentFrame'] == 4) {
         vaisseau.element.style.backgroundImage = 'none';
         vaisseau.reacteur.style.backgroundImage = 'none';
         vaisseau.pince.style.backgroundImage = 'none';
@@ -74,8 +75,8 @@ const consequenceExplosionVaisseau = (frame) => {
 
 
 
-const consequenceVaisseauCharge = (frame) => {
-    if (frame == 7) {
+const consequenceVaisseauCharge = (data) => {
+    if (data['currentFrame'] == 7) {
         CONTENEUR.style.display = 'none';
     }
     vaisseau.cargaison = true;
@@ -83,18 +84,18 @@ const consequenceVaisseauCharge = (frame) => {
 
 
 
-const consequenceVaisseauDecharge = (frame) => {
-    if (frame == 7) {
-        document.querySelector('[data-destination] .conteneur').classList.remove('hide');
-        document.querySelector('[data-destination]').classList.remove('--actif');
+const consequenceVaisseauDecharge = (data) => {
+    if (data['currentFrame'] == 7) {
+        data['elementInteraction'].querySelector('.conteneur').classList.remove('hide');
+        data['elementInteraction'].classList.remove('--actif');
     }
     vaisseau.cargaison = false;
 };
 
 
 
-const consequenceDegatVaisseau = (frame) => {
-    if (frame == 5) {
+const consequenceDegatVaisseau = (data) => {
+    if (data['currentFrame'] == 5) {
         vaisseau.element.style.removeProperty('background-position');
     }
 };
