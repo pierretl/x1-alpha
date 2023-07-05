@@ -66,4 +66,7 @@ let
         cargaison: false
     },
     toucheClavier,
-    acceleration = 0;
+    acceleration = 0,
+    partie = {
+        nombreConteneur: 2
+    };

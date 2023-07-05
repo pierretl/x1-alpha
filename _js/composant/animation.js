@@ -33,8 +33,10 @@ const animationSprite = function(element, spriteX, spriteY, spriteH, totalFrame,
                 if (currentFrame > 0) {
                     gravite.stop(); 
                     requestAnimationFrame(moveSprite);
-                } else {
-                    //permet de relancer la gravitation sans etre dans un boucle infini
+                    return
+                } 
+                if (partie.nombreConteneur != 0) {
+                    //permet de relancer la gravitation sans etre dans un eboucle infini
                     document.dispatchEvent(new KeyboardEvent('keyup', {
                         'key': 'ArrowDown'
                     }));
@@ -46,8 +48,10 @@ const animationSprite = function(element, spriteX, spriteY, spriteH, totalFrame,
                 if (currentFrame <= totalFrame) {
                     gravite.stop(); 
                     requestAnimationFrame(moveSprite);
-                } else {
-                    //permet de relancer la gravitation sans etre dans un boucle infini
+                    return;
+                } 
+                if (partie.nombreConteneur != 0) {
+                    //permet de relancer la gravitation sans etre dans une boucle infini
                     document.dispatchEvent(new KeyboardEvent('keyup', {
                         'key': 'ArrowDown'
                     }));
@@ -77,8 +81,18 @@ const consequenceExplosionVaisseau = (data) => {
 
 const consequenceVaisseauCharge = (data) => {
     if (data['currentFrame'] == 7) {
-        CONTENEUR.style.display = 'none';
+        CONTENEUR.querySelector('.conteneur').style.display = 'none';
     }
+    if (
+        data['currentFrame'] == 14 && 
+        partie.nombreConteneur > 1 //
+    ) {
+        console.log('animation a faire et à déclencher');
+        setTimeout(() => {
+            CONTENEUR.querySelector('.conteneur').removeAttribute('style');
+          }, "1500")
+
+    } 
     vaisseau.cargaison = true;
 };
 
@@ -88,6 +102,12 @@ const consequenceVaisseauDecharge = (data) => {
     if (data['currentFrame'] == 7) {
         data['elementInteraction'].querySelector('.conteneur').classList.remove('hide');
         data['elementInteraction'].classList.remove('--actif');
+    }
+    if (data['currentFrame'] == 14) {
+        partie.nombreConteneur -= 1;
+        if (partie.nombreConteneur === 0) {
+            console.log('gagné');
+        }
     }
     vaisseau.cargaison = false;
 };
