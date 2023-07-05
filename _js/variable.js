@@ -65,6 +65,5 @@ let
         vie: 1,
         cargaison: false
     },
-    chargementPossible = false,
     toucheClavier,
     acceleration = 0;
