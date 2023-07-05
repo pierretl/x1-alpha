@@ -1,6 +1,6 @@
 const 
     SCENE = document.getElementById('scene'),
-    DECOR = document.getElementById('sol');
+    DECOR = document.getElementById('decor');
     OBSTACLES = document.querySelectorAll('[data-obstacle]'),
     CONTENEUR = document.querySelector('[data-conteneur]'),
     DESTINATIONS = document.querySelectorAll('[data-destination]'),

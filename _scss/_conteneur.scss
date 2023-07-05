@@ -1,0 +1,23 @@
+.hitbox-conteneur {
+    position: absolute;
+    width: 3px;
+    height: 18px;
+    bottom: 32px;
+    left:87px;
+    //background-color: red;
+}
+
+.conteneur {
+    width: 29px;
+    height: 18px;
+    background-image: url(../_media/sprite.gif);
+    background-position: -202px -556px;
+    transform: translate(-50%, 0);
+}
+
+.hitbox-destination .conteneur {
+    position: absolute;
+    top: 100%;
+    left:50%;
+    transform: translate(-50%,5px);
+}
