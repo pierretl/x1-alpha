@@ -87,10 +87,15 @@ const consequenceVaisseauCharge = (data) => {
         data['currentFrame'] == 14 && 
         partie.nombreConteneur > 1 //
     ) {
-        console.log('animation a faire et à déclencher');
+        
+        setTimeout(() => {
+            CARGAISON.style.transition = 'bottom 1s';
+            CARGAISON.style.bottom = 0;
+          }, "800")
         setTimeout(() => {
             CONTENEUR.querySelector('.conteneur').removeAttribute('style');
-          }, "1500")
+            dessineGargaison(partie.nombreConteneur-2);
+        }, "1800")
 
     } 
     vaisseau.cargaison = true;
@@ -105,6 +110,9 @@ const consequenceVaisseauDecharge = (data) => {
     }
     if (data['currentFrame'] == 14) {
         partie.nombreConteneur -= 1;
+        console.log('faire un animation pour faire disparaitre le conteneur')
+
+        activeUneDestination();
         if (partie.nombreConteneur === 0) {
             console.log('gagné');
         }

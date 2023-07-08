@@ -5,6 +5,7 @@ const
     CONTENEUR = document.querySelector('[data-conteneur]'),
     DESTINATIONS = document.querySelectorAll('[data-destination]'),
     JAUGE = document.getElementById('jauge-degat'),
+    CARGAISON = document.getElementById('cargaison'),
     DELAI_GRAVITE = 100,
     CSS_DESTINATION_ACTIF = '--actif',
     CSS_DESTINATION_READY = '--ready',
@@ -47,6 +48,12 @@ const
             Y: 155,
             W: 83,
             H: 31
+        },
+        CONTENEUR : {
+            X: 202,
+            Y: 556,
+            W: 29,
+            H: 18
         }
     };
 
@@ -68,5 +75,5 @@ let
     toucheClavier,
     acceleration = 0,
     partie = {
-        nombreConteneur: 2
+        nombreConteneur: 3
     };
