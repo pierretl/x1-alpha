@@ -46,3 +46,55 @@ const dessineGargaison = function(nbConteneur) {
 };
 
 dessineGargaison(partie.nombreConteneur - 1);
+
+
+
+/**
+ * Pause
+ */
+let gamePause = function() {
+    if (toucheClavier == 'p') {
+        partie.statut = 'pause';
+        DIALOG_PAUSE.showModal();
+        DIALOG_START.close();
+    }
+}
+
+
+
+/**
+ * Relancer le jeu apres la pause
+ */
+BTN_RELANCER.addEventListener('click', function() {
+    DIALOG_PAUSE.close();
+    partie.statut = 'start';
+});
+
+
+
+/**
+ * Commencer un nouvelle partie
+ */
+BTN_REJOUER.addEventListener('click', function() {
+    DIALOG_START.showModal();
+    DIALOG_PAUSE.close();
+});
+
+
+
+/**
+ * Commencer un nouvelle partie
+ */
+FORM_PARTIE.addEventListener("submit", (event) => {
+    event.preventDefault();
+    DIALOG_START.close();
+    DIALOG_PAUSE.close();
+    partie.nombreConteneur = difficulter.value;
+    dessineGargaison(partie.nombreConteneur - 1);
+    partie.statut = 'start';
+    vaisseau.degat = 0;
+    vaisseau.x = 50;
+    vaisseau.y = 100;
+    JAUGE.removeAttribute('style');
+    CONTENEUR.querySelector('.conteneur').removeAttribute('style');
+});

@@ -7,7 +7,7 @@
     <script defer src="script.min.js"></script>
     <title>X-1 ALPHA</title>
 </head>
-<body>
+<body>      
 
     <div class="scene" id="scene">
         <canvas class="decor" id="decor"></canvas>
@@ -53,6 +53,33 @@
             </div>
         </div>
     </div>
+
+    <dialog id="dialogStart" open>
+        <form class="df fd-c ai-c gap" id="formPartie">
+            <label for="difficulter">Difficulter</label>
+            <select name="difficulter" id="difficulter">
+                <option value="1">Novice</option>
+                <option value="3" selected>Débutant</option>
+                <option value="6">Intermédiaire</option>
+                <option value="9">Avancé</option>
+                <!--<option value="infini">Expert</option>-->
+            </select>
+            <button type="submit" id="btnJouer">
+                Commencer
+            </button>
+        </form>
+    </dialog>
+
+    <dialog id="dialogPause">
+        <div class="df fd-c ai-c gap">
+            <div class="df fd-c ai-c">
+                <p>Jeu en pause</p>
+                <button type="button" id="btnRelancer">Reprendre</button>
+            </div>
+            <button type="button" id="btnRejouer">Commencer une nouvelle partie</button>
+        </div>
+    </dialog>
+    
     
     
 </body>

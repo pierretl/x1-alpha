@@ -6,6 +6,12 @@ const
     DESTINATIONS = document.querySelectorAll('[data-destination]'),
     JAUGE = document.getElementById('jauge-degat'),
     CARGAISON = document.getElementById('cargaison'),
+    DIALOG_START = document.getElementById('dialogStart'),
+    DIALOG_PAUSE = document.getElementById('dialogPause'),
+    FORM_PARTIE = document.getElementById('formPartie'),
+    BTN_RELANCER = document.getElementById('btnRelancer'),
+    BTN_REJOUER = document.getElementById('btnRejouer'),
+    BTN_JOUER = document.getElementById('btnJouer'),
     DELAI_GRAVITE = 100,
     CSS_DESTINATION_ACTIF = '--actif',
     CSS_DESTINATION_READY = '--ready',
@@ -75,5 +81,6 @@ let
     toucheClavier,
     acceleration = 0,
     partie = {
+        statut: 'pause',
         nombreConteneur: 3
     };

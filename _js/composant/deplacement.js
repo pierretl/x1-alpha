@@ -18,6 +18,7 @@ document.addEventListener('keyup', function(e) {
     vaisseau.reacteur.style.transform = '';
     acceleration = 0; //re initialise l'acceleration
     gravite.start();
+    gamePause();
     //deplaceVaisseau(0, 0); // init deplacement si pas de gravité
     
 });
@@ -258,5 +259,7 @@ deplaceVaisseau();
  * Boucle du jeu
  */
 setInterval(function(){
-    controlVaisseau();
+    if (partie.statut != 'pause') {
+        controlVaisseau();
+    }
 }, 1000/24);

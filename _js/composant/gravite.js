@@ -1,5 +1,7 @@
 var gravite = new Timer(function() {
-    deplaceVaisseau(0, 1);
+    if (partie.statut != 'pause') {
+        deplaceVaisseau(0, 1);
+    }
 }, DELAI_GRAVITE);
 
 // desactive la gravité
