@@ -14,7 +14,7 @@
     transform: translate(-50%, 0);
     width: 56px;
     height: 32px;
-    background-image: url(../_media/sprite.gif);
+    background-image: url(./_media/sprite.gif);
     background-position: -202px -574px;
 }
 
@@ -22,7 +22,7 @@
     content: '';
     width: 56px;
     height: 32px;
-    background-image: url(../_media/sprite.gif);
+    background-image: url(./_media/sprite.gif);
 }
 
 .hitbox-destination.--actif .destination:after {
@@ -52,6 +52,6 @@
     transform: translate(-50%, 0);
     width: 66px;
     height: 40px;
-    background-image: url(../_media/sprite.gif);
+    background-image: url(./_media/sprite.gif);
     background-position: -247px -392px;
 }

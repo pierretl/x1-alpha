@@ -16,13 +16,13 @@
     transform: translate(-50%, 0);
     width: 41px;
     height: 8px;
-    background-image: url(../_media/sprite.gif);
+    background-image: url(./_media/sprite.gif);
     background-position: -202px -416px;
 }
 .jauge__degat {
     width: 41px;
     height: 8px;
-    background-image: url(../_media/sprite.gif);
+    background-image: url(./_media/sprite.gif);
     background-position: -202px -424px;
     clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
     transition: clip-path .2s;
