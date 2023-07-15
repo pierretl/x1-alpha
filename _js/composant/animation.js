@@ -75,6 +75,9 @@ const consequenceExplosionVaisseau = (data) => {
         vaisseau.reacteur.style.backgroundImage = 'none';
         vaisseau.pince.style.backgroundImage = 'none';
     }
+    if (data['currentFrame'] == 10) {
+        gameLoose();
+    }
 };
 
 
@@ -112,10 +115,16 @@ const consequenceVaisseauDecharge = (data) => {
         partie.nombreConteneur -= 1;
         console.log('faire un animation pour faire disparaitre le conteneur')
 
-        activeUneDestination();
         if (partie.nombreConteneur === 0) {
-            console.log('gagné');
+            // attend la fin de l'animation du contenur qui disparait 
+            setTimeout(() => {
+                gameWin();
+              }, "1000");
+
+            return;
         }
+
+        activeUneDestination();
     }
     vaisseau.cargaison = false;
 };

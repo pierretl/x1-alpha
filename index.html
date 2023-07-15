@@ -81,11 +81,19 @@
         </form>
     </dialog>
 
-    <dialog id="dialogPause">
+    <dialog id="dialogStatut">
         <div class="df fd-c ai-c gap">
-            <div class="df fd-c ai-c">
-                <p>Jeu en pause</p>
-                <button type="button" id="btnRelancer">Reprendre</button>
+            <div id="pauseSection">
+                <div class="df fd-c ai-c">
+                    <p>Jeu en pause</p>
+                    <button type="button" id="btnRelancer">Reprendre</button>
+                </div>
+            </div>
+            <div id="winSection" class="hide">
+                <p>Gagné</p>
+            </div>
+            <div id="looseSection" class="hide">
+                <p>Perdu</p>
             </div>
             <button type="button" id="btnRejouer">Commencer une nouvelle partie</button>
         </div>

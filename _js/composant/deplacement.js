@@ -18,7 +18,11 @@ document.addEventListener('keyup', function(e) {
     vaisseau.reacteur.style.transform = '';
     acceleration = 0; //re initialise l'acceleration
     gravite.start();
-    gamePause();
+
+    if (toucheClavier == 'p') {
+        gamePause();
+    }
+
     //deplaceVaisseau(0, 0); // init deplacement si pas de gravité
     
 });

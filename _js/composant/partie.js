@@ -50,23 +50,10 @@ dessineGargaison(partie.nombreConteneur - 1);
 
 
 /**
- * Pause
- */
-let gamePause = function() {
-    if (toucheClavier == 'p') {
-        partie.statut = 'pause';
-        DIALOG_PAUSE.showModal();
-        DIALOG_START.close();
-    }
-}
-
-
-
-/**
  * Relancer le jeu apres la pause
  */
 BTN_RELANCER.addEventListener('click', function() {
-    DIALOG_PAUSE.close();
+    DIALOG_SATUT.close();
     partie.statut = 'start';
 });
 
@@ -77,8 +64,10 @@ BTN_RELANCER.addEventListener('click', function() {
  */
 BTN_REJOUER.addEventListener('click', function() {
     DIALOG_START.showModal();
-    DIALOG_PAUSE.close();
+    DIALOG_SATUT.close();
 });
+
+
 
 
 
@@ -88,13 +77,81 @@ BTN_REJOUER.addEventListener('click', function() {
 FORM_PARTIE.addEventListener("submit", (event) => {
     event.preventDefault();
     DIALOG_START.close();
-    DIALOG_PAUSE.close();
+    DIALOG_SATUT.close();
+    vaisseau.element.removeAttribute('style');
+    vaisseau.reacteur.removeAttribute('style');
+    vaisseau.pince.removeAttribute('style');
+    vaisseau.boom.removeAttribute('style');
+    JAUGE.removeAttribute('style');
+    CONTENEUR.querySelector('.conteneur').removeAttribute('style');
+    DESTINATIONS.forEach(function(destination){
+        destination.querySelector('.conteneur').classList.add('hide');
+    });
+    DIALOG_SECTION_WIN.classList.add('hide');
     partie.nombreConteneur = difficulter.value;
     dessineGargaison(partie.nombreConteneur - 1);
     partie.statut = 'start';
     vaisseau.degat = 0;
     vaisseau.x = 50;
     vaisseau.y = 100;
-    JAUGE.removeAttribute('style');
-    CONTENEUR.querySelector('.conteneur').removeAttribute('style');
+    vaisseau.cargaison = false;
+    activeUneDestination();
+    deplaceVaisseau();
+    gravite.start();
 });
+
+
+
+/**
+ * Pause
+ */
+let gamePause = function() {
+    activePause();
+    hideStatutSection();
+    DIALOG_SECTION_PAUSE.classList.remove('hide');
+}
+
+
+
+/**
+ * Gagné
+ */
+let gameWin = function() {
+    activePause();
+    hideStatutSection();
+    DIALOG_SECTION_WIN.classList.remove('hide');
+}
+
+
+
+/**
+ * Perdu
+ */
+let gameLoose = function() {
+    activePause();
+    hideStatutSection();
+    DIALOG_SECTION_LOOSE.classList.remove('hide');
+}
+
+
+
+/**
+ * Active la pause
+ */
+let activePause = function() {
+    partie.statut = 'pause';
+    DIALOG_SATUT.showModal();
+    DIALOG_START.close();
+}
+
+
+
+/**
+ * masque tous les messages de statut
+ */
+let hideStatutSection = function() {
+    DIALOG_SECTION_WIN.classList.add('hide');
+    DIALOG_SECTION_PAUSE.classList.add('hide');
+    DIALOG_SECTION_LOOSE.classList.add('hide');
+}
+
